@@ -17,9 +17,9 @@ let language_code;
 // users data arrays gets from Users sheet
 let usersData; 
 
-// bot token 
-let token;
+// let token = process.env.BOT_TOKEN;
+let token = PropertiesService.getScriptProperties().getProperty('BOT_TOKEN');
+let SpreadsheetID = PropertiesService.getScriptProperties().getProperty('SPREADSHEET_ID');
 
 // google tables service variables
-let table;
-
+let table = SpreadsheetApp.openById(SpreadsheetID);
