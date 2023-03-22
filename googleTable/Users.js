@@ -1,5 +1,27 @@
 // версия 1
 
+let user = {
+  telegramID: null,
+  nick: null,
+  name: null,
+  currentAction: null,
+  role: null,
+  rowInTable: null,
+  isNewUser: null,
+  tariff: null,
+};
+
+function makeUser(rowInTable, telegramID,nick,name,currentAction=null,role=null,tariff=null,isNewUser=false){
+  user.telegramID= telegramID;
+  user.nick= nick;
+  user.name= name;
+  user.currentAction= currentAction;
+  user.role= role;
+  user.rowInTable= rowInTable;
+  user.isNewUser= isNewUser;
+  user.tariff= tariff;
+  return user;
+}
 
 
 /**
