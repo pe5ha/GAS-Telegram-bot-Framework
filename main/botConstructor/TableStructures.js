@@ -51,6 +51,7 @@ let tStories = {
     id_Title: "id",
     nick_Title: "ник",
     name_Title: "имя",
+    language_code_Title: "язык",
     current_action_Title: "текущее действие",
     role_Title: "роль",
     tariff_Title: "тариф",
@@ -61,6 +62,7 @@ let tStories = {
         this.id_Title,	
         this.nick_Title,	
         this.name_Title,	
+        this.language_code_Title,
         this.current_action_Title, 
         this.role_Title,
         this.tariff_Title

@@ -7,6 +7,9 @@ let BotCommands = {
 }
 
 
+
+
+
 // TODO сделать фабрику объектов этих
 let BotTextCommands = {
   rules: "📘 Правила",
@@ -39,12 +42,7 @@ let UserActions = {
   ask_question: "ask_question",
 }
 
-let AdminActions = {
-  input_story: "input_story",
-  input_button_title: "input_button_title",
-  input_rules: "input_rules",
-  input_return: "input_return"
-}
+
 let AdminCommands = {
   add_story: "/addstory",
   stop_input: "/stop_input",

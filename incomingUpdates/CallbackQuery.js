@@ -15,5 +15,5 @@ function callbackQueryReceived(callback_query) {
   // initial user checking
   userRegister(user_id);
 
-  buttonsUseCases();
+  buttonsUseCases(data);
 }
