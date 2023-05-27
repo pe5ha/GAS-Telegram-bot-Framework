@@ -54,7 +54,6 @@ let tStories = {
     language_code_Title: "язык",
     current_action_Title: "текущее действие",
     role_Title: "роль",
-    tariff_Title: "тариф",
     allRange: "A:G",
     getColumnsOrder(){
       return [
@@ -64,8 +63,7 @@ let tStories = {
         this.name_Title,	
         this.language_code_Title,
         this.current_action_Title, 
-        this.role_Title,
-        this.tariff_Title
+        this.role_Title
       ];
     },
     getCol(columnTitle){
