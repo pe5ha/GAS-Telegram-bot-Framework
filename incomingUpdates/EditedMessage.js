@@ -1,4 +1,3 @@
-// версия 1
 
 function editMessageReceived(edited_message){
   chat_id = edited_message.chat.id;

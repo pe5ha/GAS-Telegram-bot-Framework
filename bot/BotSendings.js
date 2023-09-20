@@ -3,7 +3,7 @@
  */
 
 
- function botSendMessage(chat_id, textToSend,keyboard=null,parsemode="HTML",disableWebPagePreview=false){
+function botSendMessage(chat_id, textToSend,keyboard=null,parsemode="HTML",disableWebPagePreview=false){
   if(!keyboard) keyboard = { remove_keyboard: true };
 
   let telegramResp = TelegramAPI.sendMessage(token, chat_id, textToSend,keyboard,parsemode,disableWebPagePreview);
@@ -12,7 +12,7 @@
 function botEditMessage(chat_id,message_id, textToSend,keyboard=null,parsemode="HTML",disableWebPagePreview=false){
   // if(!keyboard) keyboard = { remove_keyboard: true };
 
-  let telegramResp = TelegramAPI.editMessage(token, chat_id,message_id, textToSend,keyboard);
+  let telegramResp = TelegramAPI.editMessage(token, chat_id,message_id, textToSend, keyboard, parsemode, disableWebPagePreview);
   afterSending(telegramResp,"(Бот изменил)");
 }
 
@@ -26,8 +26,8 @@ function afterSending(telegramResp,action=""){
   }
   else{ // ошибка отправки
 
-    // !!!!!!!!!!!!!!!!!!!!!! delete later
-    botSendText(235733832,JSON.stringify(telegramResp));
+    // лог ошибки в чат
+    botSendText(errorMessagesChat, JSON.stringify(telegramResp));
 
     if(telegramResp.error_code==400){
       // {"ok":false,"error_code":400,"description":"Bad Request: chat not found"}

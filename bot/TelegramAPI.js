@@ -163,7 +163,7 @@ let TelegramAPI = {
     return sendData(token,data);
   },
   
-  /**
+/**
   * @deprecated - ??
   */
   sendMessageV2(token,chat_id,message){
@@ -259,6 +259,7 @@ let TelegramAPI = {
       return null;
     }  
   }
+  
   /**
   * @deprecated - ??
   */

@@ -1,4 +1,3 @@
-// версия 1
 
 function directMessage(){
 

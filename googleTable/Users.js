@@ -1,4 +1,3 @@
-// версия 1
 
 let user = {
   telegramID: null,
@@ -8,7 +7,17 @@ let user = {
   role: null,
   rowInTable: null,
   isNewUser: null,
-  tariff: null,
+  setUserRole(newRole){
+    tUsers.use().getRange(this.rowInTable,tUsers.getCol(tUsers.role_Title)+1).setValue(newRole);
+    this.role = newRole;
+  },
+  setUserName(newName){
+    tUsers.use().getRange(this.rowInTable,tUsers.getCol(tUsers.name_Title)+1).setValue(newName);
+    this.name = newName;
+  },
+  setUserCurrentAction(currentAction){
+    tUsers.use().getRange(this.rowInTable, tUsers.getCol(tUsers.current_action_Title)+1).setValue(currentAction);
+  },
 };
 
 function makeUser(rowInTable, telegramID,nick,name,currentAction=null,role=null,tariff=null,isNewUser=false){

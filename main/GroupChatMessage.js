@@ -1,4 +1,3 @@
-// версия 0.1
 
 function groupChatMessage(message){
 
@@ -17,6 +16,4 @@ function groupChatMessage(message){
   // если ничего не стриггерилось
   useCases();
 
-
 }
-

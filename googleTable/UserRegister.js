@@ -1,16 +1,16 @@
-// версия 1
 
 /**
  * Функция регистрации новых пользователей в боте
  * @param {Number} id - id искомого пользователя
  * @returns false - если такой пользователь уже есть в базе, true - если не было в базе
  */
- function userRegister(id) {
+function userRegister(id) {
   // поиск юзера в списке уже существующих
   if(tUsers.use() == null) { // если такого листа нет
     table.insertSheet(tUsers.sheetName); // то такой лист создаётся
     let style = SpreadsheetApp.newTextStyle().setBold(true).setItalic(true).build();
     tUsers.use().getRange(1,1,1,tUsers.getColumnsOrder().length).setValues([tUsers.getColumnsOrder()]).setTextStyle(style).setHorizontalAlignment("center");
+    tUsers.use().deleteRows(3,998);
   }
   usersData = tUsers.use().getRange(tUsers.allRange).getValues(); // массив всех значений id
   let row = -1;
@@ -25,7 +25,14 @@
   // добавление юзера
   if (row === -1) { // если юзер с таким id не записан, то регистрируем его
     user = makeUser(2,user_id,nick,name,null,null,null,true);
-    let userData = [[stringDate(),user.telegramID,user.nick,user.name,language_code,user.currentAction,user.role,user.tariff]]; // массив данных пользователя
+    user.rowInTable = row;
+    user.telegramID = user_id;
+    user.nick = nick;
+    user.name = name;
+    user.currentAction = null;
+    user.role = null;
+    user.isNewUser = true;
+    let userData = [[stringDate(),user.telegramID,user.nick,user.name,language_code,user.currentAction,user.role]]; // массив данных пользователя
     // userData[0].push(surname); // фамилия
     
     tUsers.use().insertRowBefore(2); // в лист юзеров вставляется новая строка сверху (после заголовков)
@@ -46,17 +53,25 @@
     if (usersData[i][tUsers.getCol(tUsers.nick_Title)] !== nick) {
       tUsers.use().getRange(row, tUsers.getCol(tUsers.nick_Title)+1).setValue(nick);
     }
-    if (usersData[i][tUsers.getCol(tUsers.name_Title)] !== name) {
-      tUsers.use().getRange(row, tUsers.getCol(tUsers.name_Title)+1).setValue(name);
-    }
-    user = makeUser(
-      row,
-      user_id,
-      nick,
-      usersData[i][tUsers.getCol(tUsers.name_Title)],
-      usersData[i][tUsers.getCol(tUsers.current_action_Title)],
-      usersData[i][tUsers.getCol(tUsers.role_Title)],
-    );
+    // if (usersData[i][tUsers.getCol(tUsers.name_Title)] !== name) {
+    //   tUsers.use().getRange(row, tUsers.getCol(tUsers.name_Title)+1).setValue(name);
+    // }
+    user.rowInTable = row;
+    user.telegramID = user_id;
+    user.nick = nick;
+    user.name = usersData[i][tUsers.getCol(tUsers.name_Title)];
+    user.currentAction = usersData[i][tUsers.getCol(tUsers.current_action_Title)];
+    user.role = usersData[i][tUsers.getCol(tUsers.role_Title)];
+    user.isNewUser = false;
+
+    // user = makeUser(
+    //   row,
+    //   user_id,
+    //   nick,
+    //   usersData[i][tUsers.getCol(tUsers.name_Title)],
+    //   usersData[i][tUsers.getCol(tUsers.current_action_Title)],
+    //   usersData[i][tUsers.getCol(tUsers.role_Title)],
+    // );
     return false;
   }
 }

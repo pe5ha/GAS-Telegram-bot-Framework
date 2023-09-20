@@ -3,6 +3,20 @@
  * Можно легко отключать от контейнера и передеплоить как web app, а можно ли и то и то??
  */
 
+let contents;
+// bot service variables
+let chat_id;
+let user_id;
+let name;
+let nick;
+let date;
+let message_id;
+let text = "";
+let data;
+let textToSend;
+let language_code;
+
+
 
 function debugDoPost(){
   let tDebug = table.getSheetByName("Debug");
@@ -16,7 +30,7 @@ function doPost(e) {
     entryPoint(e);
   }
   catch (err) {
-    botSendText(235733832,err.stack);
+    botSendText(errorMessagesChat, err.stack);
   }
 }
 
