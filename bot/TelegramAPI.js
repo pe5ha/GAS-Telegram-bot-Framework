@@ -5,6 +5,23 @@
 
 let TelegramAPI = {
 
+getMe(token){
+  let data = {
+    method: "post",
+    payload: {
+      method: "getMe"
+    },
+    muteHttpExceptions: true
+  };
+  let response = sendData(token, data);
+  if(response){
+    return JSON.parse(response).result; // todo сделать везде так.
+  }
+  else{
+    return null;
+  }
+},
+
 sendMediaGroup(token, chat_id, media) {
   let data = {
     method: "post",
@@ -145,6 +162,9 @@ sendMessage(token,chat_id,txt,keyboard=null,parsemode="HTML",disableWebPagePrevi
   return sendData(token,data);
 },
 
+/**
+ * @deprecated - ??
+ */
 sendMessageV2(token,chat_id,message){
   
   // message.method = "sendMessage";
@@ -238,7 +258,9 @@ function sendData(token,data){
     return null;
   }  
 }
-
+/**
+ * @deprecated - ??
+ */
 function sendDataV2(token, method, data){
   try{
     let resp = UrlFetchApp.fetch("https://api.telegram.org/bot"+token+"/"+method, data);
