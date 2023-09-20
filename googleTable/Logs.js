@@ -11,7 +11,9 @@ function logUpdate(action, text) {
     tLog = table.getSheetByName(LogSheet.SheetName);
     let style = SpreadsheetApp.newTextStyle().setBold(true).setItalic(true).build();
     tLog.getRange(1,1,1,LogSheet.getColumnsOrder().length).setValues([LogSheet.getColumnsOrder()]).setTextStyle(style).setHorizontalAlignment("center");
-    tLog.deleteRows(3,998);
+    try {
+      tLog.deleteRows(3,998);
+    } catch (error) {}
   }
   tLog.insertRowBefore(2);
   let logdate = date ? stringDate(date*1000) : stringDate();
@@ -41,6 +43,9 @@ function logDebug(e){
   if(tDebug == null) { // если такого листа нет
     table.insertSheet(DebugSheet.SheetName); // то такой лист создаётся
     tDebug = table.getSheetByName(DebugSheet.SheetName);
+    try {
+      tDebug.deleteRows(5,990);
+    } catch (error) {}
   }
   tDebug.getRange(1, 3).setValue(JSON.stringify(e, null, 5));
   let contents = JSON.parse(e.postData.contents);

@@ -10,7 +10,9 @@ function userRegister(id) {
     table.insertSheet(tUsers.sheetName); // то такой лист создаётся
     let style = SpreadsheetApp.newTextStyle().setBold(true).setItalic(true).build();
     tUsers.use().getRange(1,1,1,tUsers.getColumnsOrder().length).setValues([tUsers.getColumnsOrder()]).setTextStyle(style).setHorizontalAlignment("center");
-    tUsers.use().deleteRows(3,998);
+    try {
+      tUsers.use().deleteRows(3,998);
+    } catch (error) {}
   }
   usersData = tUsers.use().getRange(tUsers.allRange).getValues(); // массив всех значений id
   let row = -1;
