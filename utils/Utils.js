@@ -43,6 +43,15 @@ function getFirstEmptyRow(range){
   return -1;
 }
 
+function getFirstEmptyRowInAA(sheet){
+  let data = sheet.getRange("A:A").getValues();
+  for(let i=0;i<data.length;i++){
+    if(data[i][0]==="") return i+1;
+  }
+  sheet.insertRowAfter(sheet.getLastRow());
+  return sheet.getLastRow()+1;
+}
+
 function isValidHttpUrl(string) {
   let url;
   try {
@@ -62,6 +71,14 @@ function findRowIn2dRange(array,column,value){
   return -1;
 }
 
+function findRowIn2dRangeString(array,column,value){
+  for (let i = 0; i < array.length; i++) { 
+    if (String(array[i][column]) == String(value)) {
+      return i;
+    }
+  }
+  return -1;
+}
 
 
 
