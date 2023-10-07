@@ -144,7 +144,7 @@ let TelegramAPI = {
   * @param  {Boolean} disableWebPagePreview Disables link previews for links in this message (optional).
   * @returns {resp} Telegram response
   */
-  sendMessage(token,chat_id,txt,keyboard=null,parsemode="HTML",disableWebPagePreview=false){
+  sendMessage(token,chat_id,txt,keyboard=null,parsemode="HTML",disableWebPagePreview=false, reply_to_message_id=null){
     // если без кнопок сообщение то клавиатура null
     if(keyboard!=null) keyboard = JSON.stringify(keyboard);
   
@@ -157,6 +157,7 @@ let TelegramAPI = {
         reply_markup: keyboard,
         parse_mode: parsemode,
         disable_web_page_preview: disableWebPagePreview,
+        reply_to_message_id: reply_to_message_id
       },
       muteHttpExceptions: true
     };
