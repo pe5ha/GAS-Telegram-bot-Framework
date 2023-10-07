@@ -5,6 +5,7 @@ let user = {
   name: null,
   currentAction: null,
   role: null,
+  phone: null,
   rowInTable: null,
   isNewUser: null,
   setUserRole(newRole){
@@ -14,6 +15,10 @@ let user = {
   setUserName(newName){
     tUsers.use().getRange(this.rowInTable,tUsers.getCol(tUsers.name_Title)+1).setValue(newName);
     this.name = newName;
+  },
+  setUserPhone(newPhone){
+    tUsers.use().getRange(this.rowInTable,tUsers.getCol(tUsers.phone_Title)+1).setValue(newPhone);
+    this.phone = newPhone;
   },
   setUserCurrentAction(currentAction){
     tUsers.use().getRange(this.rowInTable, tUsers.getCol(tUsers.current_action_Title)+1).setValue(currentAction);
