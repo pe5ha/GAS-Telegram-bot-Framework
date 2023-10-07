@@ -52,8 +52,10 @@ function entryPoint(e){
     editMessageReceived(contents.edited_message);
   }
 
+  return;
 
   // other updates
+  /*
   else if (contents.channel_post !== null) {
 
   }
@@ -109,6 +111,7 @@ function entryPoint(e){
   else if (contents.chat_join_request !== null) {
 
   }
+  */
 
 
   /**
