@@ -9,7 +9,8 @@ let tUsers = {
   language_code_Title: "язык",
   current_action_Title: "текущее действие",
   role_Title: "роль",
-  allRange: "A:G",
+  phone_Title: "телефон",
+  allRange: "A:H",
   getColumnsOrder(){
     return [
       this.reg_date_Title,	
@@ -18,7 +19,8 @@ let tUsers = {
       this.name_Title,	
       this.language_code_Title,
       this.current_action_Title, 
-      this.role_Title
+      this.role_Title,
+      this.phone_Title
     ];
   },
   getCol(columnTitle){
